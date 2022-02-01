@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract EhrabNFT {
-	constructor () public {
-		console.log("This is my NFT contract. Whoa!");
+	constructor() {
+		console.log("Welcome to Ehrab's collection.");
 	}
 }
