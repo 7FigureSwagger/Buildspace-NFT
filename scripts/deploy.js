@@ -1,5 +1,5 @@
-// This script should remain for DEVELOPMENT ONLY, use deploy.js for PRODUCTION and TESTNET
-// No need to import ethers, can access it through Hardhat Runtime Environment, or 'HRE'
+// This is for PRODUCTION and TESTNET deployment
+// Use run.js for messing around during development
 
 const main = async () => {
 	// Compile our contract and generate the files needed to work with. Artifacts.
@@ -15,11 +15,13 @@ const main = async () => {
 	let tx = await nftContract.mintEhrabNFT();
 	// Wait for it to be mined.
 	await tx.wait();
-
+	console.log("Minted NFT #1")
+	
 	// Mint another NFT for fun.
 	tx = await nftContract.mintEhrabNFT();
 	// Wait for it to be mined.
 	await tx.wait();
+	console.log("Minted NFT #2")
 };
 
 const runMain = async () => {
