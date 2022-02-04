@@ -13,6 +13,10 @@ contract EhrabNFT is ERC721URIStorage {
     // Initialize contract state in contract storage
     Counters.Counter private _tokenIds;
 
+		// State to expose to public, should be able to use _tokenIds?
+		// REvisit
+		uint256 public nftCount = 0;
+
     // This is our SVG code. All we need to change is the word that's displayed. Everything else stays the same.
     // So, we make a baseSvg variable here that all our NFTs can use.
     string baseSvg =
@@ -103,6 +107,10 @@ contract EhrabNFT is ERC721URIStorage {
 
     // Function for user to hit to get their NFT
     function mintEhrabNFT() public {
+				// ------------- ADD REQUIRE STATEMENT -------------
+
+				// ------------- ADD REQUIRE STATEMENT -------------
+
         // Get the current tokenId, this starts at 0.
         uint256 newItemId = _tokenIds.current();
 
@@ -142,7 +150,7 @@ contract EhrabNFT is ERC721URIStorage {
             abi.encodePacked("data:application/json;base64,", json)
         );
         console.log("\n--------------------");
-        console.log(combined);
+        console.log("URi: \n");
         console.log(finalTokenUri);
         console.log("--------------------\n");
 
@@ -159,10 +167,14 @@ contract EhrabNFT is ERC721URIStorage {
             msg.sender
         );
 
+				// Update public contract state variable
+				nftCount = newItemId;
+
         // Increment the counter for when the next NFT is minted.
         _tokenIds.increment();
 
         // Emit minting event
         emit NewNFTMinted(msg.sender, newItemId);
     }
+
 }
